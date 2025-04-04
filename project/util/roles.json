@@ -1,0 +1,24 @@
+{
+  "roles": [
+    {
+      "class_type": "Fighter",
+      "health": 1000,
+      "damage": 60
+    },
+    {
+      "class_type": "Wizard",
+      "health": 500,
+      "damage": 120
+    },
+    {
+      "class_type": "Paladin",
+      "health": 800,
+      "damage": 80
+    },
+    {
+      "class_type": "Archer",
+      "health": 600,
+      "damage": 90
+    }
+  ]
+}
