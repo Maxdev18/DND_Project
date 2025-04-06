@@ -1,8 +1,12 @@
-from character import Character
+from util.base import DungeonMaster, Player
 
 def main():
-  print("Hello DND player")
-  char = Character()
+  dm = DungeonMaster()
+  player = Player("Max")
+  player.connect()
+  dm.start_server()
+
+  print("Connecting player...")/quit
   
 if __name__ == "__main__":
   main()
