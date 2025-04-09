@@ -1,31 +1,31 @@
 {
   "potions": [
     {
-      "name": "Health Potion",
+      "potion_name": "Health Potion",
       "effect": "Heal 10% - 25% of the total user's health"
     },
     {
-      "name": "Strength Potion",
+      "potion_name": "Strength Potion",
       "effect": "Increase the attack damage from user up to 5% - 20%"
     },
     {
-      "name": "Invulnerability Potion",
+      "potion_name": "Invulnerability Potion",
       "effect": "Makes the player takes no damage"
     },
     {
-      "name": "Armor Potion",
+      "potion_name": "Armor Potion",
       "effect": "Reduces the damage taken from enemies by 10% - 30%"
     },
     {
-      "name": "Stun Potion",
+      "potion_name": "Stun Potion",
       "effect": "Reduce damage to player by 75% - 90%"
     },
     {
-      "name": "Explosive Potion",
+      "potion_name": "Explosive Potion",
       "effect": "Inflicts 10% explosive damage of the total enemy's health on hit"
     },
     {
-      "name": "Resistance Potion",
+      "potion_name": "Resistance Potion",
       "effect": "Reduce the damage taken from enemies by 5% - 10%"
     }
   ]

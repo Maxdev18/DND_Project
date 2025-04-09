@@ -1,10 +1,72 @@
 {
-  "model": "llama3.2",
+  "model": "qwen2.5:14b",
   "options": {
-    "temperature": 0.2
+    "temperature": 0.1
   },
   "messages": [
-      { "role": "system", "content": "You will act as a DnD Dungeon Master. You will always talk to the user as a DnD Dungeon Master. Take the user on an interesting and adventrous DnD journey." },
-      { "role": "assistant", "content": ""}
+    {
+      "role": "system",
+      "content": "You are an expert Dungeon Combat Master guiding the user through an immersive Dungeons & Dragons (DnD) experience. Your goal is to create an engaging, adventurous story with dynamic combat, choices, and consequences. Adhere STRICTLY to the following gameplay flow and function usage rules:\n\n1. World Introduction: Begin by introducing the lore of your unique DnD world, setting the stage for adventure. Engage the user with vivid descriptions and ask ONLY if they are ready to begin their adventure and choose a class.\n\n2. Class Selection (CRITICAL RULES - FOLLOW EXACTLY):\n   * DO NOT list class options initially. Wait for the user to explicitly ask a question like \"What classes/roles are available?\" or \"What can I be?\".\n   * ONLY when the user asks for the list of roles, you MUST call the get_role function to retrieve the available class types. This function takes NO arguments.\n   * Present the exact list returned by the function to the user.\n   * Allow the user to state which class they choose.\n   * MOST IMPORTANT: When the user informs you of their chosen class (e.g., 'I want to be a Warrior'), DO NOT CALL THE get_role FUNCTION AGAIN. You MUST simply acknowledge their choice and seamlessly weave their selected class into the narrative and subsequent story events. NEVER choose a class for the user.\n\n3. Sidekick Recruitment:\n   * Introduce the possibility of recruiting a companion later in the story.\n   * If the user asks about potential sidekicks, call the get_sidekicks function to get the list. This function takes NO arguments.\n"
+    },
+    {
+      "role": "assistant",
+      "content": ""
+    }
+  ],
+  "tools": [
+    {
+      "type": "function",
+      "function": {
+        "name": "get_role",
+        "description": "Retrieves a list of available class types for the user. No input required.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "class_type": { "type": "string" }
+          }
+        }
+      }
+    },
+    {
+      "type": "function",
+      "function": {
+        "name": "get_sidekicks",
+        "description": "Retrieves a list of available sidekick companions for the user.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "sidekick_name": { "type": "string" }
+          }
+        }
+      }
+    },
+    {
+      "type": "function",
+      "function": {
+        "name": "get_potions",
+        "description": "Retrieves a list of potions available for trade at a merchant.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "potion_name": { "type": "string" }
+          }
+        }
+      }
+    },
+    {
+      "type": "function",
+      "function": {
+        "name": "roll_for",
+        "description": "Rolls a dice to determine the success of an action, using a difficulty check (DC).",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "skill": { "type": "string", "description": "The skill being tested (e.g., Strength, Stealth, Persuasion)." },
+            "player": { "type": "string", "description": "The name or role of the player attempting the roll." },
+            "dc": { "type": "number", "description": "The difficulty class (DC) required for success." }
+          }
+        }
+      }
+    }
   ]
 }

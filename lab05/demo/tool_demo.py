@@ -3,7 +3,7 @@ import sys
 sys.path.append(str(Path(__file__).parents[2]))
 
 import requests
-from util.llm_utils import TemplateChat
+from project.util.llm_utils import TemplateChat
 
 # beauty of Python
 def process_function_call(function_call):

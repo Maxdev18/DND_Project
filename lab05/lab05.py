@@ -3,7 +3,7 @@ import sys
 sys.path.append(str(Path(__file__).parents[1]))
 
 import random
-from util.llm_utils import run_console_chat, tool_tracker
+from project.util.llm_utils import run_console_chat, tool_tracker
 
 # beauty of Python
 @tool_tracker
@@ -23,8 +23,17 @@ def roll_for(skill, dc, player):
         return f'{player} rolled {roll} for {skill} and failed!'
 
 def process_response(self, response):
-    # Fill out this function to process the response from the LLM
-    # and make the function call 
+    if response.message.tool_calls:
+        result = process_function_call(response.message.tool_calls[0].function)
+        self.messages.append({
+            'role': 'tool',
+            'name': response.message.tool_calls[0].function.name, 
+            'arguments': response.message.tool_calls[0].function.arguments,
+            'content': result
+        })
+        response = self.completion()
+        print(result)
+
     return response
 
 run_console_chat(template_file='lab05/lab05_dice_template.json',
