@@ -2,6 +2,12 @@
     "sidekick": [
         {
             "sidekick_name": "Gorlock the Destroyer"
+        },
+        {
+            "sidekick_name": "Maximus Decimus Meridius the Gladiator"
+        },
+        {
+            "sidekick_name": "Steve the Magician"
         }
     ]
 }

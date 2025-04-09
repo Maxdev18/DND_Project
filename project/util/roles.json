@@ -19,6 +19,16 @@
       "class_type": "Archer",
       "health": 600,
       "damage": 90
+    },
+    {
+      "class_type": "Berserker",
+      "health": 600,
+      "damage": 90
+    },
+    {
+      "class_type": "Programmer",
+      "health": 600,
+      "damage": 90
     }
   ]
 }
