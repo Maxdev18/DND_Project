@@ -2,7 +2,7 @@ import json
 import random
 from huggingface_hub import InferenceClient
 
-HUGGING_FACE_API_TOKEN = "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"
+HUGGING_FACE_API_TOKEN = "TOKEN"
 
 def generate_image(prompt, filename="generated_image.png"):
    client = InferenceClient(
