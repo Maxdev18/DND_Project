@@ -1,5 +1,24 @@
 import json
 import random
+from huggingface_hub import InferenceClient
+
+HUGGING_FACE_API_TOKEN = "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"
+
+def generate_image(prompt, filename="generated_image.png"):
+   client = InferenceClient(
+      provider="hf-inference",
+      api_key=HUGGING_FACE_API_TOKEN,
+   )
+
+   image = client.text_to_image(
+      prompt,
+      model="black-forest-labs/FLUX.1-dev",
+   )
+
+   # Convert the bytes to an image and save
+   image.save(filename)
+   print(f"✅ Image saved to {filename}")
+   return filename
 
 def get_role(class_type = ""):
   with open('./util/roles.json') as f:
@@ -16,21 +35,24 @@ def get_role(class_type = ""):
        
     return response
 
-def get_sidekicks(sidekick_name = ""):
-   with open('./util/sidekick.json') as f:
-    d = json.load(f)
+def get_sidekicks(sidekick_name=""):
+    with open('./util/sidekick.json') as f:
+      d = json.load(f)
 
     response = ""
+    all_names = []
 
     for sidekick in d["sidekick"]:
-       name = sidekick["sidekick_name"]
-       response += f"* {name}\n"
+      name = sidekick["sidekick_name"]
+      all_names.append(name)
+      response += f"* {name}\n"
 
-    print("Response:", response)
+      print("Generating image for:", name)
+      generate_image(f"Create a portrait of a character named {name}, stylized for a fantasy DND game.", filename=f"{name}_image.png")
 
     if sidekick_name != "":
-       print("Inside the sidekick_name here")
-       return sidekick_name
+      print("Inside the sidekick_name here")
+      return sidekick_name
 
     return response
 
