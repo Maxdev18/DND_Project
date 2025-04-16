@@ -8,6 +8,8 @@ from pathlib import Path
 from types import MethodType
 from collections import defaultdict
 
+from RAG import *
+
 ollama_seed = lambda x: int(str(int(hashlib.sha512(x.encode()).hexdigest(), 16))[:8])
 
 def pretty_stringify_chat(messages):
@@ -39,10 +41,30 @@ def tool_tracker(func):
 def run_console_chat(**kwargs):
     chat = TemplateChat.from_file(**kwargs)
     message = chat.start_chat()
+
+    data_dir = "data"
+    embedding_model = "nomic-embed-text"
+
+    documents = load_documents(data_dir)
+    chunks = chunk_documents(documents)
+    collection = setup_chroma_db(
+        chunks, 
+        ollama_model=embedding_model
+    )
+
     while True:
         print('Agent:', message)
         try:
-            message = chat.send(input('You: '))
+            user_input = input("You: ")
+            context = retrieve_context(collection, user_input)
+
+            if user_input == "./exit" or user_input == "/exit" :
+                break
+            else:
+                prompt = f"User Prompt: {user_input} \n\n Context: {context}"
+                print(prompt)
+            
+            message = chat.send(prompt)
         except StopIteration as e:
             if isinstance(e.value, tuple):
                 print('Agent:', e.value[0])

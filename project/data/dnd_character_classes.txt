@@ -1,0 +1,19 @@
+# Dungeons & Dragons Character Background Stories
+
+## Fighter
+A stalwart warrior forged by endless war, known not by name but by the sound of clashing blades. Once a soldier, now a legend, this fighter has stood against monsters, tyrants, and even fate itself. Every scar tells a tale of victory, every dented plate a memory of someone saved. They don’t speak of glory — only duty, grit, and survival.
+
+## Wizard
+Whispers tell of a mage who touched the edge of madness to unlock power beyond comprehension. Exiled from the tower that once nurtured their mind, they now walk a solitary path, wielding spells that bend the fabric of time and space. Their eyes glow faintly — not from power, but from the weight of secrets no one was meant to know.
+
+## Paladin
+This holy warrior radiates divine purpose, marching forward on a path carved by prophecy. Once broken by darkness, they now blaze with righteousness, wielding both sword and scripture. Mercy is offered to the repentant; judgment, swift and final, to those who defile the light. The heavens do not just bless this paladin — they follow.
+
+## Archer
+A ghost among the trees, this hunter moves with the silence of wind over leaves. Never seen until it's too late, never heard except in the twang of a bowstring, they are the unseen eye of vengeance. Some say they commune with beasts, others that the forest itself bends to their will. Wherever injustice hides, an arrow is already flying toward it.
+
+## Berserker
+A force of chaos wrapped in mortal flesh, this warrior is pure instinct and fury. Fueled by rage and haunted by a primal hunger for battle, they crash into enemies like a storm. Blood is a language they understand intimately — and in battle, they speak fluently. Those who face them must decide whether to run, or be swept away in the flood.
+
+## Programmer
+Not born — compiled. A mind that sees the threads of reality as lines of code, rewriting the world in real time. Their tools are not swords or spells, but logic loops and exploits in the laws of nature. Some call them a glitch in the world’s design. Others call them its future. Either way, they're not here to play by the rules — they're here to rewrite them.

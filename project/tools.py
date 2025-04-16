@@ -2,7 +2,7 @@ import json
 import random
 from huggingface_hub import InferenceClient
 
-HUGGING_FACE_API_TOKEN = "TOKEN"
+HUGGING_FACE_API_TOKEN = "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"
 
 def generate_image(prompt, filename="generated_image.png"):
    client = InferenceClient(
@@ -60,8 +60,6 @@ def get_potions(potion_name = ""):
    with open('./util/potions.json') as f:
     d = json.load(f)
     response = ""
-
-    # TODO: Need to randomly select either here or have the DM select the potions.
 
     for sidekick in d["potions"]:
        name = sidekick["potion_name"]
