@@ -1,0 +1,24 @@
+# DND Project
+For our DND project, we chose to implement a combat DND game. The game is supported by multiple different scenarios such as combat, inventory, class selection, sidekick selection, and potion selection. The project consists of multiple tool calls, a sidekick image generator, RAG implementation, and more. While the DND also maintains its lore to keep the user engaged throughout the journey, it also generates new scenarios for the user to keep the story more fun and exciting. In the next couple of sections, we will cover deeper insights about our implementation. 
+
+**Important Note:** Our group worked together in weekly meetings using the live share feature in VS code which allows us to work together real-time by sharing a VS code session. This is why you only see 1 person commiting to the repository. Everyone contributed to the project in equal proportions.
+
+### Project Setup
+To run the project, you will need to install the LLM model `qwen2.5:14b` and install the `huggingface_hub` dependency. To install qwen, run `ollama pull qwen2.5:14b`. To install `huggingface_hub`, run `pip install huggingface_hub`. Then you should be good to execute the project. From the root directory, run `cd project` to go inside where the project is located. Then run `python main.py`.
+
+### Prompt Engineering
+In the `dm_chat.json` file, we store our DND configuration. It contains the model, prompt, temperature, and tools. Let's start with the model of choice. We chose to use `qwen2.5:14b` because `llama3.2` was terrible at following directions in our prompt. We attempted numerous times to prompt engineer the prompt but llama3.2 just couldn’t follow directions. When we switched over to `qwen2.5:14b`, the results were immediately better. Without changing the prompt, we achieved the majority of what we wanted, and it just came down to fine-tuning the prompt. Even though `qwen2.5:14b` is 9 GB whereas `llama3.2` is 2 GB, we think that a bigger parameter size is the cause of the improvement of response performance. 
+
+The prompt is long but does its job. Initially, the DND master was too free when it came to decision making and returned unexpected results. So, we had to specify explicitly what we wanted, and it does a pretty good job. The temperature initially was set to 0.1 because of testing purposes. It was consistent but not too consistent so that the response from the DND master wasn’t the same every time. However, after switching over to 1, the changes in the response were unpredictable and it seemed like our prompt wasn’t working anymore. Maybe because we were tailoring the prompt for a temperature of 0.1. So, we stuck with 0.1 as our final temperature. 
+
+### Tool usage 
+We built and leveraged multiple tools which the DND master can use. Overall, we have implemented 4 tools which are `get_role`, `get_sidekicks`, `get_potions`, and `roll_for`. They get the classes, sidekicks, potions, and roll the dice during combat respectively. However, in the `get_sidekicks`, we generate images of the sidekick by calling an API. This will be covered in the Additional Tools section. 
+
+### Planning & Reasoning 
+Currently, the DND master drives the lore of the story. With our initial prompt, the DND master didn’t really generate good lore. Meaning, the DND master was following directions too literally and proceeded to the next step. So, we had to modify the prompt to let the DND master be free when it came to the story telling. 
+
+### RAG Implementation 
+We implemented RAG to maintain consistent character information between every game. We have 2 text documents (`dnd_character_classes.txt` and `dnd_sideKicks.txt`), one for playable character classes and the other for sidekick characters that contain the names and descriptions of each character. These documents are chunked and embedded using the nomic-embed-text embedding model. Then, the vector embeddings are stored in ChromaDB, the vector database. Anytime the user makes a prompt, we embed the prompt and retrieve relevant context from the vector database. The retrieved context is then appended to the user’s prompt before passing the message to the system. By retrieving context for every prompt, the system can provide better and accurate output that enhances gameplay for users. For example, using RAG, the user can ask a question about what kinds of characters are available and get a list of all the selectable player classes with their descriptions.
+
+### Additional Tools 
+As mentioned before, in the `get_sidekicks` tool, we have an additional tool that calls the Hugging Face API to generate an image for all the available sidekicks. This adds to the lore of the story and allows the user to visualize it. After it generates the image, the user can look at the images for themselves and proceed to choose a sidekick.
