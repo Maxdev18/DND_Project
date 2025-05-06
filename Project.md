@@ -1,5 +1,6 @@
 # DND Project
-For our DND project, we chose to implement a combat DND game. The game is supported by multiple different scenarios such as combat, inventory, class selection, sidekick selection, and potion selection. The project consists of multiple tool calls, a sidekick image generator, RAG implementation, and more. While the DND also maintains its lore to keep the user engaged throughout the journey, it also generates new scenarios for the user to keep the story more fun and exciting. In the next couple of sections, we will cover deeper insights about our implementation. 
+### Project contributors: Maxim Melnik, Dheeraj Gollu, Nhat Tran
+For our DND project, we chose to implement a combat DND game. The game is supported by multiple different scenarios such as combat, inventory, class selection, sidekick selection, and potion selection. The project consists of multiple tool calls, a sidekick image generator, RAG implementation, and more. While the DND also maintains its lore to keep the user engaged throughout the journey, it also generates new scenarios for the user to keep the story more fun and exciting. In the next couple of sections, we will cover deeper insights about our implementation.
 
 **Important Note:** Our group worked together in weekly meetings using the live share feature in VS code which allows us to work together real-time by sharing a VS code session. This is why you only see 1 person commiting to the repository. Everyone contributed to the project in equal proportions.
 
